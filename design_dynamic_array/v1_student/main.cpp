@@ -73,24 +73,51 @@ public:
   }
 
   // Add an element to the end
-  void push_back(int value) {
+  void pushback(int n) {
     if (size == capacity) {
       resize();
     }
-    data[size] = value;
+    data[size] = n;
     size++;
-    std::cout << "  -> Pushed " << value << ". Size: " << size << "/"
-              << capacity << "\n";
+    std::cout << "  -> Pushed " << n << ". Size: " << size << "/" << capacity
+              << "\n";
   }
 
-  // Get element at index
-  int get(int index) const {
-    if (index < 0 || index >= size) {
+  // Return the element at index i
+  int get(int i) const {
+    if (i < 0 || i >= size) {
+      // In a real scenario, this is undefined behavior or throws.
+      // For v1 student level, we might just return -1 or 0 with a warning.
       std::cout << "[Error] Index out of bounds!\n";
-      return -1; // Simple error handling for v1
+      return -1;
     }
-    return data[index];
+    return data[i];
   }
+
+  // Set the element at index i to n
+  void set(int i, int n) {
+    if (i < 0 || i >= size) {
+      std::cout << "[Error] Index out of bounds!\n";
+      return;
+    }
+    data[i] = n;
+  }
+
+  // Pop and return the element at the end of the array
+  int popback() {
+    if (size > 0) {
+      size--;
+      return data[size];
+    }
+    std::cout << "[Error] Pop from empty array!\n";
+    return -1;
+  }
+
+  // Return the number of elements
+  int getSize() const { return size; }
+
+  // Return the capacity
+  int getCapacity() const { return capacity; }
 
   // Print array contents
   void print() const {
@@ -121,25 +148,36 @@ private:
 int main() {
   std::cout << "=== 1. Creation ===\n";
   DynamicArray arr(2);
-  arr.push_back(10);
-  arr.push_back(20);
+  arr.pushback(10);
+  arr.pushback(20);
   arr.print();
+  std::cout << "Size: " << arr.getSize() << ", Capacity: " << arr.getCapacity()
+            << "\n";
 
   std::cout << "\n=== 2. Resize Trigger ===\n";
-  arr.push_back(30); // Triggers resize
+  arr.pushback(30); // Triggers resize
+  arr.print();
+  std::cout << "Size: " << arr.getSize() << ", Capacity: " << arr.getCapacity()
+            << "\n";
+
+  std::cout << "\n=== 3. Get/Set/Pop ===\n";
+  arr.set(0, 999);
+  std::cout << "Set index 0 to 999. Get(0): " << arr.get(0) << "\n";
+  int popped = arr.popback();
+  std::cout << "Popped: " << popped << "\n";
   arr.print();
 
-  std::cout << "\n=== 3. Copy Constructor ===\n";
+  std::cout << "\n=== 4. Copy Constructor ===\n";
   {
     DynamicArray copy = arr; // Calls Copy Constructor
-    copy.push_back(99);
+    copy.pushback(88);
     std::cout << "Original: ";
     arr.print();
     std::cout << "Copy:     ";
     copy.print();
   } // copy is destroyed here
 
-  std::cout << "\n=== 4. Assignment Operator ===\n";
+  std::cout << "\n=== 5. Assignment Operator ===\n";
   DynamicArray arr2(5);
   arr2 = arr; // Calls Assignment Operator
   arr2.print();

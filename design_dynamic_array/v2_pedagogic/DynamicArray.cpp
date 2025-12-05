@@ -66,6 +66,13 @@ void DynamicArray::push_back(int value) {
   m_data[m_size++] = value;
 }
 
+// Pop Back
+void DynamicArray::pop_back() {
+  if (m_size > 0) {
+    m_size--;
+  }
+}
+
 // Operator [] (Read/Write)
 int &DynamicArray::operator[](size_t index) {
   if (index >= m_size) {

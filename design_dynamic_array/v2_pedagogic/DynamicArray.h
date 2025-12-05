@@ -4,7 +4,6 @@
 #include <initializer_list>
 #include <iostream>
 
-
 // ============================================================================
 // VERSION 2: PEDAGOGIC IMPROVEMENT
 // Goal: Teach best software engineering practices.
@@ -42,6 +41,9 @@ public:
 
   // Add element
   void push_back(int value);
+
+  // Remove element (from end)
+  void pop_back();
 
   // Access element (read/write)
   int &operator[](size_t index);

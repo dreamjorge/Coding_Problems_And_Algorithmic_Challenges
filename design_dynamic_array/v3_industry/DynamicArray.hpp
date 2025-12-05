@@ -106,6 +106,16 @@ public:
     m_data[m_size++] = std::move(value);
   }
 
+  void pop_back() {
+    if (m_size > 0) {
+      m_size--;
+      // For complex types, we would also:
+      // m_data[m_size].~T();
+      // But since we use simple new T[], the object isn't actually destroyed
+      // here in the raw memory sense, but for the array logic, it's "gone".
+    }
+  }
+
   template <typename... Args> void emplace_back(Args &&...args) {
     if (m_size == m_capacity) {
       resize();

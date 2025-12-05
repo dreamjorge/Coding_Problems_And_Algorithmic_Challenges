@@ -12,23 +12,35 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
 # --- Version 1: Student Learning ---
 # Simple, single-file implementation for understanding basics
-add_executable(v1_student v1_student/main.cpp)
+add_executable(01_student_intro 01_student_intro/main.cpp)
 
 # --- Version 2: Pedagogic Improvement ---
 # Separated interface/implementation, namespaces, const-correctness
-add_executable(v2_pedagogic 
-    v2_pedagogic/main.cpp 
-    v2_pedagogic/DynamicArray.cpp
+add_executable(02_pedagogic_oop 
+    02_pedagogic_oop/main.cpp 
+    02_pedagogic_oop/DynamicArray.cpp
 )
-target_include_directories(v2_pedagogic PRIVATE v2_pedagogic)
+target_include_directories(02_pedagogic_oop PRIVATE 02_pedagogic_oop)
 
 # --- Version 3: Real-World Industry ---
 # Templates, Move Semantics, Iterators, Header-only (mostly)
-add_executable(v3_industry v3_industry/main.cpp)
-target_include_directories(v3_industry PRIVATE v3_industry)
+add_executable(03_industry_std 03_industry_std/main.cpp)
+target_include_directories(03_industry_std PRIVATE 03_industry_std)
+
+# --- Version 4: Embedded / Low-Latency ---
+# No Heap, Fixed Capacity, Error Codes
+add_executable(04_embedded_fixed 04_embedded_fixed/main.cpp)
+target_include_directories(04_embedded_fixed PRIVATE 04_embedded_fixed)
+
+# --- Version 5: Concurrent / Thread-Safe ---
+# Mutex protection, Shared Locks
+add_executable(05_concurrent_safe 05_concurrent_safe/main.cpp)
+target_include_directories(05_concurrent_safe PRIVATE 05_concurrent_safe)
 
 # --- Testing ---
 enable_testing()
-add_test(NAME TestV1 COMMAND v1_student)
-add_test(NAME TestV2 COMMAND v2_pedagogic)
-add_test(NAME TestV3 COMMAND v3_industry)
+add_test(NAME TestResultV1 COMMAND 01_student_intro)
+add_test(NAME TestResultV2 COMMAND 02_pedagogic_oop)
+add_test(NAME TestResultV3 COMMAND 03_industry_std)
+add_test(NAME TestResultV4 COMMAND 04_embedded_fixed)
+add_test(NAME TestResultV5 COMMAND 05_concurrent_safe)

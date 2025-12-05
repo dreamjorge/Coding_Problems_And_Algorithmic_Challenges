@@ -29,6 +29,6 @@ target_include_directories(v3_industry PRIVATE v3_industry)
 
 # --- Testing ---
 enable_testing()
-add_test(NAME TestV1 Command v1_student)
-add_test(NAME TestV2 Command v2_pedagogic)
-add_test(NAME TestV3 Command v3_industry)
+add_test(NAME TestV1 COMMAND v1_student)
+add_test(NAME TestV2 COMMAND v2_pedagogic)
+add_test(NAME TestV3 COMMAND v3_industry)

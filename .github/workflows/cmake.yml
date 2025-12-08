@@ -17,20 +17,20 @@ jobs:
     # See: https://docs.github.com/en/free-pro-team@latest/actions/learn-github-actions/managing-complex-workflows#using-a-build-matrix
     runs-on: ubuntu-latest
 
+    strategy:
+      matrix:
+        project: [design_dynamic_array, design_singly_linked_list]
+
     steps:
     - uses: actions/checkout@v4
 
     - name: Configure CMake
-      # Configure CMake in a 'build' subdirectory. `CMAKE_BUILD_TYPE` is only required if you are using a single-configuration generator such as make.
-      # Note: We added -S to specify the source directory since CMakeLists.txt is not in the root.
-      run: cmake -B ${{github.workspace}}/build -S ${{github.workspace}}/design_dynamic_array -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
+      # Configure each project in the matrix
+      run: cmake -B ${{github.workspace}}/${{matrix.project}}/build -S ${{github.workspace}}/${{matrix.project}} -DCMAKE_BUILD_TYPE=${{env.BUILD_TYPE}}
 
     - name: Build
-      # Build your program with the given configuration
-      run: cmake --build ${{github.workspace}}/build --config ${{env.BUILD_TYPE}}
+      run: cmake --build ${{github.workspace}}/${{matrix.project}}/build --config ${{env.BUILD_TYPE}}
 
     - name: Test
-      working-directory: ${{github.workspace}}/build
-      # Execute tests defined by the CMake configuration.
-      # Note: We added 'enable_testing()' to CMakeLists.txt so this works.
+      working-directory: ${{github.workspace}}/${{matrix.project}}/build
       run: ctest -C ${{env.BUILD_TYPE}} --output-on-failure

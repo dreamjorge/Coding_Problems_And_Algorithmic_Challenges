@@ -12,30 +12,30 @@ set(CMAKE_RUNTIME_OUTPUT_DIRECTORY ${CMAKE_BINARY_DIR}/bin)
 
 # --- Version 1: Student Learning ---
 # Simple, single-file implementation for understanding basics
-add_executable(01_student_intro 01_student_intro/main.cpp)
+add_executable(01_student_intro 01_student_intro/cpp/main.cpp)
 
 # --- Version 2: Pedagogic Improvement ---
 # Separated interface/implementation, namespaces, const-correctness
 add_executable(02_pedagogic_oop 
-    02_pedagogic_oop/main.cpp 
-    02_pedagogic_oop/DynamicArray.cpp
+    02_pedagogic_oop/cpp/main.cpp 
+    02_pedagogic_oop/cpp/DynamicArray.cpp
 )
-target_include_directories(02_pedagogic_oop PRIVATE 02_pedagogic_oop)
+target_include_directories(02_pedagogic_oop PRIVATE 02_pedagogic_oop/cpp)
 
 # --- Version 3: Real-World Industry ---
 # Templates, Move Semantics, Iterators, Header-only (mostly)
-add_executable(03_industry_std 03_industry_std/main.cpp)
-target_include_directories(03_industry_std PRIVATE 03_industry_std)
+add_executable(03_industry_std 03_industry_std/cpp/main.cpp)
+target_include_directories(03_industry_std PRIVATE 03_industry_std/cpp)
 
 # --- Version 4: Embedded / Low-Latency ---
 # No Heap, Fixed Capacity, Error Codes
-add_executable(04_embedded_fixed 04_embedded_fixed/main.cpp)
-target_include_directories(04_embedded_fixed PRIVATE 04_embedded_fixed)
+add_executable(04_embedded_fixed 04_embedded_fixed/cpp/main.cpp)
+target_include_directories(04_embedded_fixed PRIVATE 04_embedded_fixed/cpp)
 
 # --- Version 5: Concurrent / Thread-Safe ---
 # Mutex protection, Shared Locks
-add_executable(05_concurrent_safe 05_concurrent_safe/main.cpp)
-target_include_directories(05_concurrent_safe PRIVATE 05_concurrent_safe)
+add_executable(05_concurrent_safe 05_concurrent_safe/cpp/main.cpp)
+target_include_directories(05_concurrent_safe PRIVATE 05_concurrent_safe/cpp)
 
 # --- Testing ---
 enable_testing()

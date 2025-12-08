@@ -77,23 +77,34 @@ To deepen your understanding of the concepts used in these versions, we recommen
 You can run the provided scripts in the `scripts/` directory to build and run specific versions.
 
 ### Powershell Scripts
-*   **Build All**:
+*   **Build All (C++)**:
     ```powershell
     ./scripts/build_all.ps1
     ```
+*   **Run All (Python)**:
+    ```powershell
+    ./scripts/run_python_all.ps1
+    ```
 *   **Run Specific Version**:
     ```powershell
-    ./scripts/build_da_01.ps1  # Runs Dynamic Array Version 1
-    ./scripts/build_ll_05.ps1  # Runs Linked List Version 5
+    ./scripts/build_da_01.ps1  # Runs Dynamic Array Version 1 (C++)
+    # For Python, run directly:
+    python design_dynamic_array/01_student_intro/python/main.py
     ```
+
+## Project Structure
+Each problem version now contains:
+*   `cpp/`: C++ source code and headers.
+*   `python/`: Python implementation.
 
 ## Getting Started
 
 ### Prerequisites
 *   C++ Compiler (GCC, Clang, MSVC) supporting C++17.
 *   CMake (3.10+).
+*   Python 3.x.
 
-### Building a Problem
+### Building a Problem (C++)
 Each problem is a self-contained CMake project. To build the **Dynamic Array** solution, for example:
 
 1.  Clone the repository:
@@ -114,10 +125,10 @@ Each problem is a self-contained CMake project. To build the **Dynamic Array** s
     cmake --build .
     ```
 
-4.  Run the versions:
-    *   `./v1_student`
-    *   `./v2_pedagogic`
-    *   `./v3_industry`
+4.  Run the versions (check `bin/` or `bin/Debug/` folder):
+    *   `./01_student_intro`
+    *   `./02_pedagogic_oop`
+    *   `./03_industry_std`
 
 ## License
 

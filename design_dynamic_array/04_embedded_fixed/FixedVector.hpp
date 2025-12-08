@@ -1,11 +1,10 @@
-#ifndef FIXED_VECTOR_HPP
-#define FIXED_VECTOR_HPP
+#ifndef DYNAMIC_ARRAY_04_EMBEDDED_FIXED_VECTOR_HPP
+#define DYNAMIC_ARRAY_04_EMBEDDED_FIXED_VECTOR_HPP
 
 #include <array>
 #include <cstddef>
 #include <iostream>
 #include <stdexcept>
-
 
 // ============================================================================
 // VERSION 4: EMBEDDED / LOW-LATENCY
@@ -18,6 +17,16 @@
 
 namespace embedded {
 
+/**
+ * @brief A fixed-capacity vector implementation for embedded systems.
+ *
+ * Uses std::array for stack-based allocation to avoid heap fragmentation.
+ * Does not throw exceptions; returns status codes (book) or handles errors
+ * gracefully.
+ *
+ * @tparam T Type of elements.
+ * @tparam Capacity Maximum number of elements.
+ */
 template <typename T, size_t Capacity> class FixedVector {
 private:
   std::array<T, Capacity> m_data; // Allocated on Stack (or BSS if static)
@@ -26,6 +35,12 @@ private:
 public:
   // O(1) Push
   // Returns false if full (instead of throwing/resizing)
+  /**
+   * @brief Adds an element to the end of the vector.
+   *
+   * @param value The value to add.
+   * @return true if successful, false if the vector is full.
+   */
   bool push_back(const T &value) {
     if (m_size >= Capacity) {
       return false; // Error: Overflow
@@ -72,4 +87,4 @@ public:
 
 } // namespace embedded
 
-#endif // FIXED_VECTOR_HPP
+#endif // DYNAMIC_ARRAY_04_EMBEDDED_FIXED_VECTOR_HPP

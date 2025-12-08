@@ -1,5 +1,5 @@
-#ifndef DYNAMIC_ARRAY_V3_HPP
-#define DYNAMIC_ARRAY_V3_HPP
+#ifndef DYNAMIC_ARRAY_03_INDUSTRY_HPP
+#define DYNAMIC_ARRAY_03_INDUSTRY_HPP
 
 #include <algorithm>
 #include <cstddef>
@@ -40,20 +40,9 @@ public:
       : m_size(list.size()), m_capacity(list.size()) {
     m_data = new T[m_capacity];
     std::copy(list.begin(), list.end(), m_data);
-  }
+  } // End of Initializer List Constructor
 
-  ~DynamicArray() { delete[] m_data; }
-
-  // --- Rule of Five ---
-
-  // 1. Copy Constructor
-  DynamicArray(const DynamicArray &other)
-      : m_size(other.m_size), m_capacity(other.m_capacity) {
-    m_data = new T[m_capacity];
-    std::copy(other.m_data, other.m_data + m_size, m_data);
-  }
-
-  // 2. Copy Assignment
+  // 2. Copy Assignment Operator (Rule of Five Part 2)
   DynamicArray &operator=(const DynamicArray &other) {
     if (this != &other) {
       T *newData = new T[other.m_capacity];
@@ -120,9 +109,9 @@ public:
     if (m_size == m_capacity) {
       resize();
     }
-    // Construct in-place (simplified for array, usually requires placement new)
-    // For raw array of objects, they are already default constructed.
-    // We just assign. Ideally we'd use raw memory + placement new.
+    // Construct in-place (simplified for array, usually requires placement
+    // new) For raw array of objects, they are already default constructed. We
+    // just assign. Ideally we'd use raw memory + placement new.
     m_data[m_size++] = T(std::forward<Args>(args)...);
   }
 
@@ -178,4 +167,4 @@ private:
 
 } // namespace industry
 
-#endif // DYNAMIC_ARRAY_V3_HPP
+#endif // DYNAMIC_ARRAY_03_INDUSTRY_HPP

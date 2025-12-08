@@ -1,7 +1,7 @@
 #include <iostream>
 
 // ============================================================================
-// VERSION 1: STUDENT LEARNING
+// 01: STUDENT LEARNING
 // Goal: Understand memory management, pointers, and the "Rule of Three".
 // Features:
 // - Simple "int" array (no templates).
@@ -9,8 +9,8 @@
 // - All in one file for easy reading.
 //
 // Compilation:
-//   g++ main.cpp -o v1_student
-//   ./v1_student
+//   g++ main.cpp -o 01_student
+//   ./01_student
 // ============================================================================
 
 class DynamicArray {
@@ -139,20 +139,19 @@ private:
     for (int i = 0; i < size; ++i) {
       newData[i] = data[i]; // 2. Copy old
     }
-    delete[] data;  // 3. Delete old
-    data = newData; // 4. Point to new
+    delete[] data; // 3. Delete old
+    data = newData;
     capacity = newCapacity;
   }
 };
 
 int main() {
-  std::cout << "=== 1. Creation ===\n";
+  std::cout << "=== 01 (Student Intro) ===\n"; // Matches naming convention
+
   DynamicArray arr(2);
   arr.pushback(10);
   arr.pushback(20);
   arr.print();
-  std::cout << "Size: " << arr.getSize() << ", Capacity: " << arr.getCapacity()
-            << "\n";
 
   std::cout << "\n=== 2. Resize Trigger ===\n";
   arr.pushback(30); // Triggers resize

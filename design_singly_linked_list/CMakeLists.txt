@@ -31,8 +31,8 @@ target_include_directories(ll_05_concurrent PRIVATE 05_concurrent_safe)
 
 # --- Testing ---
 enable_testing()
-add_test(NAME TestLinkedListV1 COMMAND ll_01_student)
-add_test(NAME TestLinkedListV2 COMMAND ll_02_pedagogic)
-add_test(NAME TestLinkedListV3 COMMAND ll_03_industry)
-add_test(NAME TestLinkedListV4 COMMAND ll_04_embedded)
-add_test(NAME TestLinkedListV5 COMMAND ll_05_concurrent)
+add_test(NAME TestLinkedList01 COMMAND ll_01_student)
+add_test(NAME TestLinkedList02 COMMAND ll_02_pedagogic)
+add_test(NAME TestLinkedList03 COMMAND ll_03_industry)
+add_test(NAME TestLinkedList04 COMMAND ll_04_embedded)
+add_test(NAME TestLinkedList05 COMMAND ll_05_concurrent)

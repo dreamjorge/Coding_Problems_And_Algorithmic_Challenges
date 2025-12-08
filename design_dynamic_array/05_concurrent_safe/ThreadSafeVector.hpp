@@ -1,11 +1,10 @@
-#ifndef THREAD_SAFE_VECTOR_HPP
-#define THREAD_SAFE_VECTOR_HPP
+#ifndef DYNAMIC_ARRAY_05_CONCURRENT_THREAD_SAFE_VECTOR_HPP
+#define DYNAMIC_ARRAY_05_CONCURRENT_THREAD_SAFE_VECTOR_HPP
 
 #include <iostream>
 #include <mutex>
 #include <shared_mutex>
 #include <vector>
-
 
 // ============================================================================
 // VERSION 5: CONCURRENT / MULTI-THREADED
@@ -18,6 +17,14 @@
 
 namespace concurrent {
 
+/**
+ * @brief A thread-safe dynamic array wrapper.
+ *
+ * Uses std::shared_mutex to allow multiple concurrent readers (shared lock)
+ * but only one exclusive writer (unique lock).
+ *
+ * @tparam T Type of elements.
+ */
 template <typename T> class ThreadSafeVector {
 private:
   std::vector<T> m_data;             // Underlying container
@@ -27,6 +34,14 @@ public:
   ThreadSafeVector() = default;
 
   // Thread-Safe Writer
+  /**
+   * @brief Access element at index (Thread-Safe Read).
+   *
+   * @param index Index to access.
+   * @return T Copy of the element (copy is essential for thread safety after
+   * lock release).
+   * @throws std::out_of_range If index is invalid.
+   */
   void push_back(const T &value) {
     std::unique_lock<std::shared_mutex> lock(m_mutex); // Exclusive Lock
     m_data.push_back(value);
@@ -34,6 +49,9 @@ public:
   }
 
   // Thread-Safe Writer
+  /**
+   * @brief Removes the last element (Thread-Safe Write).
+   */
   void pop_back() {
     std::unique_lock<std::shared_mutex> lock(m_mutex);
     if (!m_data.empty()) {
@@ -67,4 +85,4 @@ public:
 
 } // namespace concurrent
 
-#endif // THREAD_SAFE_VECTOR_HPP
+#endif // DYNAMIC_ARRAY_05_CONCURRENT_THREAD_SAFE_VECTOR_HPP

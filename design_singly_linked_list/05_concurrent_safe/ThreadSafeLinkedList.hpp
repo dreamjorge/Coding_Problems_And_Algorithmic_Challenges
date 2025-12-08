@@ -1,12 +1,18 @@
-#ifndef THREAD_SAFE_LINKED_LIST_HPP
-#define THREAD_SAFE_LINKED_LIST_HPP
+#ifndef LINKED_LIST_05_CONCURRENT_SAFE_HPP
+#define LINKED_LIST_05_CONCURRENT_SAFE_HPP
 
 #include <iostream>
 #include <mutex>
 #include <shared_mutex>
 #include <vector>
 
-
+/**
+ * @brief Thread-Safe Singly Linked List.
+ *
+ * Uses coarse-grained locking with std::shared_mutex.
+ * - Readers (get, size, getValues) use shared_lock.
+ * - Writers (insert, remove) use unique_lock.
+ */
 namespace concurrent {
 
 struct Node {
@@ -35,6 +41,10 @@ public:
     }
   }
 
+  /**
+   * @brief Insert at head (Thread-Safe Writer).
+   * @param val Value to insert.
+   */
   void insertHead(int val) {
     std::unique_lock<std::shared_mutex> lock(m_mutex); // Writer Lock
     Node *newNode = new Node(val);
@@ -116,4 +126,4 @@ public:
 
 } // namespace concurrent
 
-#endif // THREAD_SAFE_LINKED_LIST_HPP
+#endif // LINKED_LIST_05_CONCURRENT_SAFE_HPP

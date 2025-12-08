@@ -1,14 +1,13 @@
 #include "FixedVector.hpp"
 #include <iostream>
 
-
 struct SensorData {
   int id;
   float temp;
 };
 
 int main() {
-  std::cout << "=== 04. Embedded Systems (Fixed Capacity) ===\n";
+  std::cout << "=== 04 (Embedded Fixed) ===\n";
 
   // 1. Create a Vector with strict capacity of 5
   embedded::FixedVector<SensorData, 5> buffer;

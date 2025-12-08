@@ -39,8 +39,8 @@ target_include_directories(05_concurrent_safe PRIVATE 05_concurrent_safe)
 
 # --- Testing ---
 enable_testing()
-add_test(NAME TestResultV1 COMMAND 01_student_intro)
-add_test(NAME TestResultV2 COMMAND 02_pedagogic_oop)
-add_test(NAME TestResultV3 COMMAND 03_industry_std)
-add_test(NAME TestResultV4 COMMAND 04_embedded_fixed)
-add_test(NAME TestResultV5 COMMAND 05_concurrent_safe)
+add_test(NAME TestResult01 COMMAND 01_student_intro)
+add_test(NAME TestResult02 COMMAND 02_pedagogic_oop)
+add_test(NAME TestResult03 COMMAND 03_industry_std)
+add_test(NAME TestResult04 COMMAND 04_embedded_fixed)
+add_test(NAME TestResult05 COMMAND 05_concurrent_safe)

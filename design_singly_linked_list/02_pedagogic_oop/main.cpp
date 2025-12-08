@@ -1,14 +1,13 @@
 #include "LinkedList.h"
 #include <iostream>
 
-
 int main() {
-  std::cout << "=== Linked List v2 (Pedagogic OOP) ===\n";
-  teaching::LinkedList list;
+  std::cout << "=== 02 (Pedagogic OOP) ===\n";
 
+  teaching::LinkedList list;
   list.insertHead(10);
   list.insertTail(20);
-  list.insertHead(5); // 5, 10, 20
+  list.insertTail(30);
 
   std::cout << "Values: ";
   for (int v : list.getValues())

@@ -1,11 +1,12 @@
-#ifndef DYNAMIC_ARRAY_V2_H
-#define DYNAMIC_ARRAY_V2_H
+#ifndef DYNAMIC_ARRAY_02_PEDAGOGIC_H
+#define DYNAMIC_ARRAY_02_PEDAGOGIC_H
 
 #include <initializer_list>
 #include <iostream>
 
 // ============================================================================
-// VERSION 2: PEDAGOGIC IMPROVEMENT
+// ============================================================================
+// 02: PEDAGOGIC IMPROVEMENT
 // Goal: Teach best software engineering practices.
 // Features:
 // - Separation of Interface (.h) and Implementation (.cpp).
@@ -17,6 +18,12 @@
 
 namespace teaching {
 
+/**
+ * @brief A dynamic array implementation focused on teaching C++ best practices.
+ *
+ * Features explicit memory management with Rule of Three, const correctness,
+ * and namespaces.
+ */
 class DynamicArray {
 private:
   int *m_data;   // Prefix member variables with m_
@@ -25,9 +32,19 @@ private:
 
 public:
   // Constructor
+  /**
+   * @brief Construct a new Dynamic Array object.
+   *
+   * @param initialCapacity Initial capacity of the array.
+   */
   explicit DynamicArray(size_t initialCapacity = 2);
 
   // Initializer List Constructor (e.g., DynamicArray arr = {1, 2, 3};)
+  /**
+   * @brief Construct a new Dynamic Array object from an initializer list.
+   *
+   * @param list Initializer list of integers.
+   */
   DynamicArray(std::initializer_list<int> list);
 
   // Destructor
@@ -64,4 +81,4 @@ private:
 
 } // namespace teaching
 
-#endif // DYNAMIC_ARRAY_V2_H
+#endif // DYNAMIC_ARRAY_02_PEDAGOGIC_H

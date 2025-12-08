@@ -2,12 +2,11 @@
 #include <iostream>
 
 int main() {
-  std::cout << "=== Linked List v4 (Embedded Fixed) ===\n";
+  std::cout << "=== 04 (Embedded Fixed) ===\n";
 
-  // Pool size = 5
+  // Create a list with capacity 5
   embedded::StaticLinkedList<int, 5> list;
 
-  std::cout << "Insert 0..4 (Should succeed)\n";
   for (int i = 0; i < 5; ++i) {
     if (!list.insertTail(i * 10)) {
       std::cout << "Failed to insert " << i * 10 << "\n";

@@ -44,6 +44,49 @@ Current coding interview resources often present a single "optimal" solution tha
 | **Reusability** | None | Low | High | High | High |
 | **Interview** | Algorithms | OOD | Senior / Systems | Embedded | Scaling / Backend |
 
+## References & Further Reading
+
+To deepen your understanding of the concepts used in these versions, we recommend the following resources:
+
+### 1. Algorithms & Basics (01_student)
+*   **Book:** *Cracking the Coding Interview* by Gayle Laakmann McDowell.
+*   **Book:** *Grokking Algorithms* by Aditya Bhargava.
+*   **Web:** [GeeksforGeeks Data Structures](https://www.geeksforgeeks.org/data-structures/)
+
+### 2. Software Engineering (02_pedagogic)
+*   **Book:** *Effective C++* by Scott Meyers (Essential for Rule of Three/Five).
+*   **Book:** *Clean Code* by Robert C. Martin.
+*   **Web:** [C++ Core Guidelines](https://isocpp.github.io/CppCoreGuidelines/CppCoreGuidelines)
+
+### 3. Advanced C++ (03_industry)
+*   **Book:** *C++ Templates: The Complete Guide* by Vandevoorde et al.
+*   **Book:** *C++ Move Semantics* by Nicolai M. Josuttis.
+*   **Web:** [cppreference.com](https://en.cppreference.com/) - The bible for standard library types.
+
+### 4. Systems & Embedded (04_embedded)
+*   **Book:** *Real-Time C++* by Christopher Kormanyos.
+*   **Book:** *Making Embedded Systems* by Elecia White.
+*   **Web:** [Embedded Template Library (ETL)](https://www.etlcpp.com/)
+
+### 5. Concurrency (05_concurrent)
+*   **Book:** *C++ Concurrency in Action* by Anthony Williams.
+*   **Concept:** [Readers-Writer Lock (Wikipedia)](https://en.wikipedia.org/wiki/Readers%E2%80%93writer_lock)
+
+## Usage
+
+You can run the provided scripts in the `scripts/` directory to build and run specific versions.
+
+### Powershell Scripts
+*   **Build All**:
+    ```powershell
+    ./scripts/build_all.ps1
+    ```
+*   **Run Specific Version**:
+    ```powershell
+    ./scripts/build_da_01.ps1  # Runs Dynamic Array Version 1
+    ./scripts/build_ll_05.ps1  # Runs Linked List Version 5
+    ```
+
 ## Getting Started
 
 ### Prerequisites

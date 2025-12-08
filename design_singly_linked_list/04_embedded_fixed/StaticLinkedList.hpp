@@ -1,5 +1,5 @@
-#ifndef STATIC_LINKED_LIST_HPP
-#define STATIC_LINKED_LIST_HPP
+#ifndef LINKED_LIST_04_EMBEDDED_FIXED_HPP
+#define LINKED_LIST_04_EMBEDDED_FIXED_HPP
 
 #include <array>
 #include <cstdint>
@@ -7,6 +7,15 @@
 
 namespace embedded {
 
+/**
+ * @brief Static Singly Linked List for Embedded Systems.
+ *
+ * Uses a fixed-size std::array as a node pool to avoid heap allocation.
+ * Uses index-based linking (int16_t) instead of pointers.
+ *
+ * @tparam T Type of elements.
+ * @tparam Capacity Maximum number of nodes.
+ */
 template <typename T, size_t Capacity> class StaticLinkedList {
 private:
   struct Node {
@@ -30,6 +39,11 @@ public:
   }
 
   // Allocate a node from the pool (O(1))
+  /**
+   * @brief Allocates a node from the free list.
+   * @param val Value to store.
+   * @return int16_t Index of the allocated node, or -1 if full.
+   */
   int16_t allocate(const T &val) {
     if (free_head == -1)
       return -1; // OOM
@@ -138,4 +152,4 @@ public:
 
 } // namespace embedded
 
-#endif // STATIC_LINKED_LIST_HPP
+#endif // LINKED_LIST_04_EMBEDDED_FIXED_HPP

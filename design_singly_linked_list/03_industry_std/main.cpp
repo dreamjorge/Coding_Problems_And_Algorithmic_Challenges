@@ -2,27 +2,22 @@
 #include <iostream>
 #include <string>
 
-
 // Simple struct to test Emplace/Move
 struct User {
   std::string name;
   int id;
 
   User(std::string n, int i) : name(std::move(n)), id(i) {}
-
-  // Disable copy to prove move works (though LinkedList implementation uses
-  // copy for some ops, so we might need copy) Actually, industry::LinkedList
-  // copy ctor USES T copy ctor. So T must be copyable for list usage.
-};
+}; // Added missing semicolon/closing brace if needed, but struct ends here.
 
 int main() {
-  std::cout << "=== Linked List v3 (Industry) ===\n";
+  std::cout << "=== 03 (Industry Std) ===\n";
 
-  // 1. Integer List
+  // 1. Int List
   industry::LinkedList<int> list;
-  list.insertTail(10);
-  list.insertTail(20);
-  list.insertHead(5);
+  list.insertTail(1);
+  list.insertTail(2);
+  list.insertTail(3);
 
   std::cout << "Ints: ";
   for (int x : list) { // Iterator test

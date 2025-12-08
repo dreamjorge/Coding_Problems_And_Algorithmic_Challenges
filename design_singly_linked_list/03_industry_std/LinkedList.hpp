@@ -1,12 +1,11 @@
-#ifndef LINKED_LIST_V3_HPP
-#define LINKED_LIST_V3_HPP
+#ifndef LINKED_LIST_03_INDUSTRY_STD_HPP
+#define LINKED_LIST_03_INDUSTRY_STD_HPP
 
 #include <iostream>
 #include <iterator>
 #include <stdexcept>
 #include <utility>
 #include <vector>
-
 
 namespace industry {
 
@@ -18,6 +17,17 @@ template <typename T> struct Node {
   Node(Args &&...args) : val(std::forward<Args>(args)...), next(nullptr) {}
 };
 
+/**
+ * @brief Industry standard Singly Linked List.
+ *
+ * Features:
+ * - Templates for generic type support.
+ * - Iterators (begin/end) for range-based loops.
+ * - Rule of Five (Move Semantics).
+ * - Exception handling.
+ *
+ * @tparam T Type of elements.
+ */
 template <typename T> class LinkedList {
 private:
   Node<T> *head;
@@ -26,6 +36,9 @@ private:
 
 public:
   // --- Iterator Support ---
+  /**
+   * @brief Forward iterator for the linked list.
+   */
   class Iterator {
   public:
     using iterator_category = std::forward_iterator_tag;
@@ -115,6 +128,10 @@ public:
 
   // --- Operations ---
 
+  /**
+   * @brief Insert element at the head (Copy).
+   * @param val Value to insert.
+   */
   void insertHead(const T &val) {
     Node<T> *newNode = new Node<T>(val);
     newNode->next = head;
@@ -124,6 +141,10 @@ public:
     size_count++;
   }
 
+  /**
+   * @brief Insert element at the head (Move).
+   * @param val R-value to insert.
+   */
   void insertHead(T &&val) {
     Node<T> *newNode = new Node<T>(std::move(val));
     newNode->next = head;
@@ -215,4 +236,4 @@ public:
 
 } // namespace industry
 
-#endif // LINKED_LIST_V3_HPP
+#endif // LINKED_LIST_03_INDUSTRY_STD_HPP

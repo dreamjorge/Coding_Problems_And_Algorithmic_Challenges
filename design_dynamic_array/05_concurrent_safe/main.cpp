@@ -4,7 +4,6 @@
 #include <thread>
 #include <vector>
 
-
 // Simulate a worker thread
 void worker(int id, concurrent::ThreadSafeVector<int> &vec) {
   for (int i = 0; i < 5; ++i) {
@@ -21,7 +20,7 @@ void worker(int id, concurrent::ThreadSafeVector<int> &vec) {
 }
 
 int main() {
-  std::cout << "=== 05. Concurrent Systems (Thread Safe) ===\n";
+  std::cout << "=== 05 (Concurrent Safe) ===\n";
 
   concurrent::ThreadSafeVector<int> sharedVec;
   std::vector<std::thread> threads;

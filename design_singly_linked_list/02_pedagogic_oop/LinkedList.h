@@ -1,8 +1,13 @@
-#ifndef LINKED_LIST_V2_H
-#define LINKED_LIST_V2_H
+#ifndef LINKED_LIST_02_PEDAGOGIC_H
+#define LINKED_LIST_02_PEDAGOGIC_H
 
 #include <iostream>
 #include <vector>
+
+// ============================================================================
+// 02: PEDAGOGIC IMPROVEMENT
+// Goal: Encapsulated class with proper Rule of Three.
+// ============================================================================
 
 namespace teaching {
 
@@ -12,6 +17,12 @@ struct Node {
   Node(int v) : val(v), next(nullptr) {}
 };
 
+/**
+ * @brief Encapsulated Singly Linked List.
+ *
+ * Implements Rule of Three to manage memory correctly (Destructor, Copy Ctor,
+ * Copy Assignment).
+ */
 class LinkedList {
 private:
   Node *head;
@@ -29,6 +40,12 @@ public:
   LinkedList(const LinkedList &other);
 
   // Copy Assignment Operator (Rule of 3)
+  // Copy Assignment Operator (Rule of Three)
+  /**
+   * @brief Copy Assignment Operator.
+   * @param other List to copy from.
+   * @return LinkedList& Reference to self.
+   */
   LinkedList &operator=(const LinkedList &other);
 
   // Operations
@@ -43,4 +60,4 @@ public:
 
 } // namespace teaching
 
-#endif // LINKED_LIST_V2_H
+#endif // LINKED_LIST_02_PEDAGOGIC_H

@@ -2,7 +2,7 @@
 #include <vector>
 
 // ============================================================================
-// VERSION 1: STUDENT / INTERVIEW
+// 01: STUDENT / INTERVIEW
 // Goal: Basic implementation using raw pointers.
 // - Supports: Head/Tail insertion, removal by index, get by index.
 // - Focus: Pointer manipulation logic.
@@ -17,12 +17,6 @@ struct Node {
 class LinkedList {
 public:
   Node *head;
-  // For O(1) insertTail, we usually keep a tail pointer.
-  // If requirement doesn't specify O(1), we *could* iterate, but O(1) is
-  // standard expectation. However, for simplified "Student" version, let's
-  // stick to iterating if it makes logic simpler? No, insertTail is a core
-  // operation, O(1) is better. But simplest linked list often just has head.
-  // Let's stick to Head + Tail to be "correct".
   Node *tail;
   int size;
 
@@ -113,10 +107,10 @@ public:
 };
 
 int main() {
-  std::cout << "=== Linked List v1 (Student) ===\n";
-  LinkedList list;
+  std::cout << "=== 01 (Student Intro) ===\n";
 
   // Example 1 Logic
+  LinkedList list;
   std::cout << "insertHead(1)\n";
   list.insertHead(1);
 
@@ -125,6 +119,11 @@ int main() {
 
   std::cout << "insertHead(0)\n";
   list.insertHead(0);
+
+  std::cout << "Values: [ ";
+  for (int v : list.getValues())
+    std::cout << v << " ";
+  std::cout << "]\n";
 
   std::cout << "remove(1)\n";
   list.remove(1); // Removes element at index 1 (which is '1')

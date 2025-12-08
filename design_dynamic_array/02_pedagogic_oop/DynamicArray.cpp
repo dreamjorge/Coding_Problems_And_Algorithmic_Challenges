@@ -4,6 +4,11 @@
 namespace teaching {
 
 // Constructor
+/**
+ * @brief Construct a new Dynamic Array object.
+ *
+ * @param initialCapacity Initial capacity of the array.
+ */
 DynamicArray::DynamicArray(size_t initialCapacity)
     : m_size(0), m_capacity(initialCapacity) {
   if (m_capacity == 0)
@@ -12,6 +17,11 @@ DynamicArray::DynamicArray(size_t initialCapacity)
 }
 
 // Initializer List Constructor
+/**
+ * @brief Construct a new Dynamic Array object from an initializer list.
+ *
+ * @param list Initializer list.
+ */
 DynamicArray::DynamicArray(std::initializer_list<int> list)
     : m_size(list.size()), m_capacity(list.size()) {
   if (m_capacity == 0) {
@@ -27,9 +37,17 @@ DynamicArray::DynamicArray(std::initializer_list<int> list)
 }
 
 // Destructor
+/**
+ * @brief Destroy the Dynamic Array object.
+ */
 DynamicArray::~DynamicArray() { delete[] m_data; }
 
 // Copy Constructor
+/**
+ * @brief Copy Constructor.
+ *
+ * @param other The object to copy from.
+ */
 DynamicArray::DynamicArray(const DynamicArray &other)
     : m_size(other.m_size), m_capacity(other.m_capacity) {
   m_data = new int[m_capacity];
@@ -39,6 +57,12 @@ DynamicArray::DynamicArray(const DynamicArray &other)
 }
 
 // Copy Assignment Operator
+/**
+ * @brief Copy Assignment Operator.
+ *
+ * @param other The object to copy from.
+ * @return DynamicArray& Reference to self.
+ */
 DynamicArray &DynamicArray::operator=(const DynamicArray &other) {
   if (this == &other) {
     return *this;
@@ -59,6 +83,11 @@ DynamicArray &DynamicArray::operator=(const DynamicArray &other) {
 }
 
 // Push Back
+/**
+ * @brief Add an element to the end of the array.
+ *
+ * @param value The value to add.
+ */
 void DynamicArray::push_back(int value) {
   if (m_size == m_capacity) {
     resize();
@@ -67,6 +96,9 @@ void DynamicArray::push_back(int value) {
 }
 
 // Pop Back
+/**
+ * @brief Remove the last element from the array.
+ */
 void DynamicArray::pop_back() {
   if (m_size > 0) {
     m_size--;
@@ -74,6 +106,13 @@ void DynamicArray::pop_back() {
 }
 
 // Operator [] (Read/Write)
+/**
+ * @brief Access element at index.
+ *
+ * @param index Index to access.
+ * @return int& Reference to the element.
+ * @throws std::out_of_range If index is out of bounds.
+ */
 int &DynamicArray::operator[](size_t index) {
   if (index >= m_size) {
     throw std::out_of_range("Index out of bounds");
@@ -82,6 +121,13 @@ int &DynamicArray::operator[](size_t index) {
 }
 
 // Operator [] (Read-only)
+/**
+ * @brief Access element at index (Const).
+ *
+ * @param index Index to access.
+ * @return const int& Const reference to the element.
+ * @throws std::out_of_range If index is out of bounds.
+ */
 const int &DynamicArray::operator[](size_t index) const {
   if (index >= m_size) {
     throw std::out_of_range("Index out of bounds");
